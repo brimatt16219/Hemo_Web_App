@@ -1,0 +1,10 @@
+<form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+  <label>SID: <input formControlName="SID" /></label><br />
+  <label>Password: <input type="password" formControlName="pass" /></label><br />
+  <label>Class Section: <input formControlName="classSection" /></label><br />
+  <label>App Settings: <input formControlName="appSettings" /></label><br />
+  <label>Logged In: <input type="number" formControlName="loggedIn" /></label><br />
+  <button type="submit">Add Student</button>
+</form>
+
+<p>{{ message }}</p>

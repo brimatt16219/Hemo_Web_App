@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Router } from '@angular/router'; // ✅ Import Router
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +18,7 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private router: Router // ✅ Inject Router
+    private router: Router
   ) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
@@ -30,19 +30,18 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
 
+      // Use SQL login endpoint instead of SID/pass from students table
       const params = {
-        SID: username,
-        pass: password
+        username: username,
+        password: password
       };
 
-      this.http.get<any>('http://localhost:5295/api/login/login', { params }).subscribe({
+      this.http.post<any>('http://localhost:5295/api/login/SqlLogin', null, { params }).subscribe({
         next: (res) => {
-          if (res?.Sid) {
-            alert('Login successful!');
-            this.router.navigate(['/dashboard']); // ✅ Redirect to dashboard
+          if (res?.message?.toLowerCase().includes('login successful')) {
+            this.router.navigate(['/dashboard']);
           } else {
-            this.errorMessage = res.ErrorMessage || 'Login failed.';
-            console.log(this.errorMessage)
+            this.errorMessage = res.message || 'Login failed.';
           }
         },
         error: (err) => {

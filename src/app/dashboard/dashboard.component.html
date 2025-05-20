@@ -1,1 +1,26 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+  <h2>Student Dashboard</h2>
+
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <table *ngIf="students.length > 0">
+    <thead>
+      <tr>
+        <th>SID</th>
+        <th>Password</th>
+        <th>Class Section</th>
+        <th>App Settings</th>
+        <th>Logged In</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.Sid }}</td>
+        <td>{{ student.Password }}</td>
+        <td>{{ student.ClassSection }}</td>
+        <td>{{ student.AppSettings }}</td>
+        <td>{{ student.LoggedIn }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
