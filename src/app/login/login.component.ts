@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { GlobalService } from '../services/global.service'; // Import GlobalService
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private globalService: GlobalService // Inject GlobalService
   ) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
@@ -39,7 +41,8 @@ export class LoginComponent {
       this.http.post<any>('http://localhost:5295/api/login/SqlLogin', null, { params }).subscribe({
         next: (res) => {
           if (res?.message?.toLowerCase().includes('login successful')) {
-            this.router.navigate(['/dashboard']);
+            this.globalService.setUsername(username); // Store username globally
+            this.router.navigate(['/dashboard']);     // Redirect to dashboard
           } else {
             this.errorMessage = res.message || 'Login failed.';
           }

@@ -1,0 +1,12 @@
+<nav class="nav-container">
+  <div class="nav-left">
+    <a class="nav-logo" routerLink="/">Dashboard</a>
+    <a class="nav-logo" routerLink="/add-student">Add Student</a>
+    <a class="nav-logo" routerLink="/leaderboard">Leaderboard</a>
+    <!-- You can add more links here -->
+  </div>
+  <div class="nav-right">
+    <span class="welcome-text">Welcome, {{ username }}</span>
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </div>
+</nav>

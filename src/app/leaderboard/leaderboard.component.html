@@ -1,0 +1,33 @@
+<app-nav-bar></app-nav-bar>
+<div class="leaderboard-container">
+  <h2>Leaderboard</h2>
+
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <table *ngIf="leaderboard.length" class="leaderboard-table">
+    <thead>
+      <tr>
+        <th>Team Name</th>
+        <th>Time Spent (s)</th>
+        <th>SID 1</th>
+        <th>SID 2</th>
+        <th>SID 3</th>
+        <th>SID 4</th>
+        <th>SID 5</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let team of leaderboard">
+        <td>{{ team.teamName }}</td>
+        <td>{{ team.timeSpent }}</td>
+        <td>{{ team.sid1 }}</td>
+        <td>{{ team.sid2 }}</td>
+        <td>{{ team.sid3 }}</td>
+        <td>{{ team.sid4 }}</td>
+        <td>{{ team.sid5 }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!leaderboard.length && !errorMessage" class="loading">Loading leaderboard...</div>
+</div>

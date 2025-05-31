@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { GlobalService } from '../services/global.service';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, NavBarComponent], 
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
@@ -13,7 +15,10 @@ export class DashboardComponent implements OnInit {
   students: any[] = [];
   errorMessage: string = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private globalService: GlobalService
+  ) {}
 
   ngOnInit(): void {
     this.http.get<any[]>('http://localhost:5295/api/Student/GetStudents').subscribe({
