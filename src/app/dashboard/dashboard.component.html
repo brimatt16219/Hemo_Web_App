@@ -1,6 +1,6 @@
 <app-nav-bar></app-nav-bar>
 <div class="dashboard-container">
-  <h2>Student Dashboard</h2>
+  <h2>Students</h2>
 
   <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
 
@@ -12,6 +12,7 @@
         <th>Class Section</th>
         <th>App Settings</th>
         <th>Logged In</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -21,7 +22,17 @@
         <td>{{ student.ClassSection }}</td>
         <td>{{ student.AppSettings }}</td>
         <td>{{ student.LoggedIn }}</td>
+        <td class="action-buttons">
+          <button (click)="openEditPopup(student)">Edit</button>
+          <button (click)="confirmDelete(student)">Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>
+  <app-edit-student
+    *ngIf="showEditModal"
+    [student]="selectedStudent"
+    (close)="closeEditModal()"
+    (save)="saveEditedStudent($event)">
+  </app-edit-student>
 </div>

@@ -1,0 +1,19 @@
+<div class="modal">
+  <div class="modal-content">
+    <h2>Edit Student {{ studentForm.get('Sid')?.value }}</h2>
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+      <label>Password</label>
+      <input formControlName="Password">
+      <label>Class Section</label>
+      <input formControlName="ClassSection">
+      <label>App Settings</label>
+      <input formControlName="AppSettings">
+      <label>Logged In</label>
+      <input type="number" formControlName="LoggedIn">
+      <div class="modal-buttons">
+        <button type="submit">Save</button>
+        <button type="button" (click)="onCancel()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
