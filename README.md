@@ -57,3 +57,22 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Backend (.NET Core API)
+
+This project includes a backend built using .NET Core, hosted on Azure DevOps:
+
+🔗 [Cardiac Hemo Web API Repository](https://ucfcom.visualstudio.com/z_EdTech_2024_cARdiac_Hemo_Web_API/_git/z_EdTech_2024_cARdiac_Hemo_Web_API)
+
+To run the backend locally:
+
+1. Navigate to the backend project directory.
+2. Run the API using:
+
+```bash
+dotnet run
+```
+
+3. The API will be available at `http://localhost:5295/` by default.
+
+Make sure to configure your `appsettings.json` file with the appropriate connection string for your SQL Server.
