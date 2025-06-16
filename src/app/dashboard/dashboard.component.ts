@@ -60,6 +60,26 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  downloadCSV(): void {
+    const headers = ['SID', 'Password', 'Class Section', 'App Settings', 'Logged In'];
+    const rows = this.students.map(student =>
+      [student.Sid, student.Password, student.ClassSection, student.AppSettings, student.LoggedIn]
+    );
+
+    let csvContent = headers.join(',') + '\n' +
+                    rows.map(e => e.join(',')).join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', 'students.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+
   confirmDelete(student: any) {
     const confirmed = window.confirm(`Are you sure you want to delete SID: ${student.Sid}?`);
     if (confirmed) {
@@ -75,4 +95,6 @@ export class DashboardComponent implements OnInit {
       });
     }
   }
+
+  
 }
