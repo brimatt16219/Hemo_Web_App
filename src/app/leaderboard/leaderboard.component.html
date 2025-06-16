@@ -28,6 +28,6 @@
       </tr>
     </tbody>
   </table>
-
+  <button *ngIf="leaderboard.length" (click)="downloadCSV()">Download CSV</button>
   <div *ngIf="!leaderboard.length && !errorMessage" class="loading">Loading leaderboard...</div>
 </div>

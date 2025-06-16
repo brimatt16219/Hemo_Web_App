@@ -27,4 +27,33 @@ export class LeaderboardComponent implements OnInit {
       }
     });
   }
+
+  downloadCSV(): void {
+    if (!this.leaderboard.length) return;
+
+    const headers = ['Team Name', 'Time Spent (s)', 'SID 1', 'SID 2', 'SID 3', 'SID 4', 'SID 5'];
+    const rows = this.leaderboard.map(team => [
+      team.TeamName,
+      team.TimeSpent,
+      team.Sid1,
+      team.Sid2,
+      team.Sid3,
+      team.Sid4,
+      team.Sid5,
+    ]);
+
+    const csvContent = [headers, ...rows]
+      .map(e => e.map(val => `"${val}"`).join(','))
+      .join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'leaderboard.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
 }
