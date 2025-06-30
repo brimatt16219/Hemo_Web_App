@@ -4,42 +4,42 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavBarComponent }            from '../nav-bar/nav-bar.component';
 
 @Component({
-  selector:    'app-cvrquiz-attempts',
+  selector:    'app-drhemo-answers',
   standalone:  true,
   imports:     [ CommonModule, HttpClientModule, NavBarComponent ],
-  templateUrl: './cvrquiz-attempts.component.html',
-  styleUrls:   ['./cvrquiz-attempts.component.css']
+  templateUrl: './drhemo-answers.component.html',
+  styleUrls:   ['./drhemo-answers.component.css']
 })
-export class CvrquizAttemptsComponent implements OnInit {
-  attempts: any[]   = [];
+export class DrhemoAnswersComponent implements OnInit {
+  answers: any[]    = [];
   columns: string[] = [];
   errorMessage = '';
 
-  // your API action
-  private apiUrl = 'http://localhost:5295/api/CvrQuiz/GetAllQuizAttempts';
+  // your GET api/hemoSubmitAttempt/GetHemoAnswers
+  private apiUrl = 'http://localhost:5295/api/hemoSubmitAttempt/GetHemoAnswers';
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.http.get<any[]>(this.apiUrl).subscribe({
       next: data => {
-        this.attempts = data;
+        this.answers = data;
         if (data.length) {
           this.columns = Object.keys(data[0]);
         }
       },
       error: err => {
-        // console.error('Failed to fetch quiz attempts:', err);
-        this.errorMessage = err.error.errorMessage;
+        console.error('Failed to fetch Hemo answers:', err);
+        this.errorMessage = 'Failed to load answers.';
       }
     });
   }
 
   downloadCSV(): void {
-    if (!this.attempts.length) return;
+    if (!this.answers.length) return;
 
     const headerLine = this.columns.join(',');
-    const dataLines = this.attempts.map(row =>
+    const dataLines  = this.answers.map(row =>
       this.columns
         .map(col => `"${(row[col] ?? '').toString().replace(/"/g, '""')}"`)
         .join(',')
@@ -49,7 +49,7 @@ export class CvrquizAttemptsComponent implements OnInit {
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = 'quiz-attempts.csv';
+    link.download = 'drhemo_answers.csv';
     link.click();
   }
 }

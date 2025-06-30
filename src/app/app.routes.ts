@@ -9,6 +9,7 @@ import { CvrflashcardAttemptsComponent } from './cvrflashcard-attempts/cvrflashc
 import { CvrflashcardsComponent } from './cvrflashcards/cvrflashcards.component';
 import { CvrquizAttemptsComponent } from './cvrquiz-attempts/cvrquiz-attempts.component';
 import { CvrquizesComponent } from './cvrquizes/cvrquizes.component';
+import { DrhemoAnswersComponent } from './drhemo-answers/drhemo-answers.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -21,5 +22,6 @@ export const routes: Routes = [
     { path: 'cvrflashcard-attempts', component: CvrflashcardAttemptsComponent},
     { path: 'cvrflashcards', component: CvrflashcardsComponent},
     { path: 'cvrquizattempts', component: CvrquizAttemptsComponent},
-    { path: 'cvrquizes', component: CvrquizesComponent}
+    { path: 'cvrquizes', component: CvrquizesComponent},
+    { path: 'drhemo-answers', component: DrhemoAnswersComponent}
 ];
