@@ -36,7 +36,7 @@ export class CvrcaseAttemptsComponent implements OnInit {
         next: (txt) => {
           try {
             this.attempts = JSON.parse(txt) as CvrCaseAttempt[];
-            console.log('Parsed attempts array:', this.attempts);
+            // console.log('Parsed attempts array:', this.attempts);
           } catch (e) {
             console.error('Failed to parse JSON from GetCvrCaseAttempt:', e, txt);
             this.errorMessage = 'Server returned invalid data.';

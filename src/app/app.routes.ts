@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddStudentComponent } from './add-student/add-student.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { CvrcaseAttemptsComponent } from './cvrcase-attempts/cvrcase-attempts.component';
+import { CvrcasesComponent } from './cvrcases/cvrcases.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -11,5 +12,6 @@ export const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent},
     { path: 'add-student', component: AddStudentComponent },
     { path: 'leaderboard', component: LeaderboardComponent},
-    { path: 'cvrcase-attempts', component: CvrcaseAttemptsComponent}
+    { path: 'cvrcase-attempts', component: CvrcaseAttemptsComponent},
+    { path: 'cvrcases', component: CvrcasesComponent}
 ];
