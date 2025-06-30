@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CVRcaseAttemptsComponent } from './cvrcase-attempts.component';
+import { CvrcaseAttemptsComponent } from './cvrcase-attempts.component';
 
-describe('CVRcaseAttemptsComponent', () => {
-  let component: CVRcaseAttemptsComponent;
-  let fixture: ComponentFixture<CVRcaseAttemptsComponent>;
+describe('CvrcaseAttemptsComponent', () => {
+  let component: CvrcaseAttemptsComponent;
+  let fixture: ComponentFixture<CvrcaseAttemptsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CVRcaseAttemptsComponent]
+      imports: [CvrcaseAttemptsComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CVRcaseAttemptsComponent);
+    fixture = TestBed.createComponent(CvrcaseAttemptsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

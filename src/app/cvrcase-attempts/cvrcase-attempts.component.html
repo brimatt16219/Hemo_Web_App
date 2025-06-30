@@ -1,0 +1,31 @@
+<app-nav-bar></app-nav-bar>
+<div class="dashboard-container">
+  <h2>CVR Case Attempts</h2>
+
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <table *ngIf="attempts.length">
+  <thead>
+    <tr>
+      <th>CAID</th><th>CID</th><th>SID</th><th>Grade</th>
+      <th>TimeSpent</th><th>Answer</th><th>Login</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let a of attempts">
+      <td>{{ a.caseAttemptId ?? 'null' }}</td>
+      <td>{{ a.cid           ?? 'null' }}</td>
+      <td>{{ a.sid           ?? 'null' }}</td>
+      <td>{{ a.grade         ?? 'null' }}</td>
+      <td>{{ a.timeSpent     ?? 'null' }}</td>
+      <td>{{ a.answer        ?? 'null' }}</td>
+      <td>{{ a.login         ?? 'null' }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+  <button (click)="downloadCSV()" class="download-btn">
+    Download CSV
+  </button>
+</div>
