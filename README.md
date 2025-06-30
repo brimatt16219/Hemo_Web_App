@@ -1,78 +1,149 @@
 # HemoWebApp
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
+HemoWebApp is an Angular-based frontend that connects to a .NET Web API and an Azure SQL database to deliver an interactive admin portal for viewing data on the cardiac hemo server.
 
-## Development server
+---
 
-To start a local development server, run:
+## Overview
+
+HemoWebApp provides:
+
+- **Dynamic dashboards** for case attempts, flashcards, quizzes, puzzle-steps, and more  
+- **CSV export** functionality for all data tables  
+- **Real-time data interaction** with a Web API  
+- **Persistent storage** in Azure SQL  
+
+---
+
+## Tech Stack
+
+- **Frontend**  
+  - Angular (v16+)  
+  - TypeScript  
+  - RxJS  
+
+- **Backend**  
+  - ASP.NET Core Web API (C#, .NET 7)  
+  - Newtonsoft.Json for JSON serialization  
+
+- **Database**  
+  - Azure SQL Server (hosted in Microsoft Azure)  
+
+- **Source Control**  
+  - Frontend repository: [Link](https://github.com/brimatt16219/Hemo_Web_App)  
+  - Backend repository:  [Link](https://ucfcom.visualstudio.com/z_EdTech_2024_cARdiac_Hemo_Web_API/_git/z_EdTech_2024_cARdiac_Hemo_Web_API)
+    
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- **Node.js** v16 or higher  
+- **Angular CLI** (`npm install -g @angular/cli`)  
+- **.NET 7 SDK**  
+- **Azure SQL connection string** (server, database, user, password)
+
+---
+
+### 1. Clone the Repositories
 
 ```bash
-ng serve
+# Frontend (HemoWebApp)
+git clone <your-frontend-repo-url> HemoWebApp
+cd HemoWebApp
+
+# Backend (Web API)
+git clone https://ucfcom.visualstudio.com/z_EdTech_2024_cARdiac_Hemo_Web_API/_git/z_EdTech_2024_cARdiac_Hemo_Web_API
+cd z_EdTech_2024_cARdiac_Hemo_Web_API
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+### 2. Configure the Backend
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Edit `appsettings.json` in the backend project to include your Azure SQL connection string:
 
-```bash
-ng generate component component-name
+```json
+{
+  "ConnectionStrings": {
+    "DataConnection": "Server=<your-azure-server>.database.windows.net;Database=<db-name>;User Id=<user>;Password=<password>;"
+  }
+}
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Restore, build, and run the API:
 
 ```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-
-## Backend (.NET Core API)
-
-This project includes a backend built using .NET Core, hosted on Azure DevOps:
-
-🔗 [Cardiac Hemo Web API Repository](https://ucfcom.visualstudio.com/z_EdTech_2024_cARdiac_Hemo_Web_API/_git/z_EdTech_2024_cARdiac_Hemo_Web_API)
-
-To run the backend locally:
-
-1. Navigate to the backend project directory.
-2. Run the API using:
-
-```bash
+dotnet restore
+dotnet build
 dotnet run
 ```
 
-3. The API will be available at `http://localhost:5295/` by default.
+The API will listen by default on `http://localhost:5295`.
 
-Make sure to configure your `appsettings.json` file with the appropriate connection string for your SQL Server.
+---
+
+### 3. Configure & Run the Frontend
+
+Back in the HemoWebApp directory:
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Update the environment file (`src/environments/environment.ts`) to point to your API:
+   ```ts
+   export const environment = {
+     production: false,
+     apiBaseUrl: 'http://localhost:5295/api'
+   };
+   ```
+
+3. Start the Angular development server:
+   ```bash
+   ng serve
+   ```
+   The app will run at `http://localhost:4200`.
+
+---
+
+## Project Structure
+
+```
+HemoWebApp/
+├── src/
+│   └── app/
+│       ├── dashboard/              # global dashboard components
+│       ├── crv/                    # CVR-related components
+│       │   ├── cvrcase-attempts/
+│       │   ├── cvrcases/
+│       │   ├── cvrflashcard-attempts/
+│       │   ├── cvrquiz-attempts/
+│       │   └── cvrquizes/
+│       ├── drhemo/                 # Hemo-related components
+│       │   ├── drhemo-answers/
+│       │   ├── drhemo-attempts/
+│       │   └── drhemo-puzzlesteps/
+│       ├── leaderboard/            # Leaderboard component
+│       ├── login/                  # Login component
+│       ├── nav-bar/                # Navigation bar
+│       ├── services/               # HTTP and data services
+│       └── students/               # Student management
+│           ├── add-student/
+│           └── edit-student/
+├── angular.json
+├── package.json
+└── README.md
+```
+
+---
+
+## Author
+
+### Brian Chang
+- GitHub: [@brimatt16219](https://github.com/brimatt16219)  
+- LinkedIn: [linkedin.com/in/ch4ng](https://www.linkedin.com/in/ch4ng/)
+- Email: brimatt062495@gmail.com
