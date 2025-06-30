@@ -4,6 +4,8 @@
 
   <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
 
+  <button *ngIf="leaderboard.length" (click)="downloadCSV()">Download CSV</button>
+
   <table *ngIf="leaderboard.length" class="leaderboard-table">
     <thead>
       <tr>
@@ -28,6 +30,6 @@
       </tr>
     </tbody>
   </table>
-  <button *ngIf="leaderboard.length" (click)="downloadCSV()">Download CSV</button>
+  
   <div *ngIf="!leaderboard.length && !errorMessage" class="loading">Loading leaderboard...</div>
 </div>

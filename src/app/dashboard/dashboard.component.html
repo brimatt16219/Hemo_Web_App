@@ -3,6 +3,8 @@
   <h2>Students</h2>
 
   <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+  
+  <button (click)="downloadCSV()" class="download-btn">Download CSV</button>
 
   <table *ngIf="students.length > 0">
     <thead>
@@ -35,5 +37,4 @@
     (close)="closeEditModal()"
     (save)="saveEditedStudent($event)">
   </app-edit-student>
-  <button (click)="downloadCSV()" class="download-btn">Download CSV</button>
 </div>

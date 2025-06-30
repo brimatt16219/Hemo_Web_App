@@ -4,6 +4,10 @@
 
   <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
 
+  <button (click)="downloadCSV()" class="download-btn">
+    Download CSV
+  </button>
+
   <table *ngIf="quizzes.length > 0">
     <thead>
       <tr>
@@ -16,8 +20,4 @@
       </tr>
     </tbody>
   </table>
-
-  <button (click)="downloadCSV()" class="download-btn">
-    Download CSV
-  </button>
 </div>
