@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { GlobalService } from '../services/global.service';
-import { NavBarComponent } from '../nav-bar/nav-bar.component';
+import { GlobalService } from '../../services/global.service';
+import { NavBarComponent } from '../../nav-bar/nav-bar.component';
 import { EditStudentComponent } from '../edit-student/edit-student.component';
 
 

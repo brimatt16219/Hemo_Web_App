@@ -1,27 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule }               from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NavBarComponent }            from '../nav-bar/nav-bar.component';
+import { NavBarComponent }            from '../../nav-bar/nav-bar.component';
 
 @Component({
-  selector:    'app-drhemo-attempts',
+  selector:    'app-cvrflashcard-attempts',
   standalone:  true,
   imports:     [ CommonModule, HttpClientModule, NavBarComponent ],
-  templateUrl: './drhemo-attempts.component.html',
-  styleUrls:   ['./drhemo-attempts.component.css']
+  templateUrl: './cvrflashcard-attempts.component.html',
+  styleUrls:   ['./cvrflashcard-attempts.component.css']
 })
-export class DrhemoAttemptsComponent implements OnInit {
+export class CvrflashcardAttemptsComponent implements OnInit {
   attempts: any[]    = [];
   columns: string[]  = [];
   errorMessage = '';
 
-  // matches your controller’s route for drhemo_attempts
-  private apiUrl = 'http://localhost:5295/api/hemoUpdateAttempt/GetHemoAttempts';
+  // adjust if your controller is CvrCasesController vs CvrFlashcardsController
+  private apiUrl = 'http://localhost:5295/api/CvrFlashCard/GetCVRFlashcardAttempt';
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    // API returns a JSON‐string payload via JsonConvert.SerializeObject(...)
     this.http.get(this.apiUrl, { responseType: 'text' }).subscribe({
       next: txt => {
         try {
@@ -35,13 +34,13 @@ export class DrhemoAttemptsComponent implements OnInit {
             this.columns = Object.keys(data[0]);
           }
         } catch (e) {
-          console.error('Invalid JSON from GetHemoAttempts:', e, txt);
+          console.error('Invalid JSON from GetCvrFlashcards:', e, txt);
           this.errorMessage = 'Server returned invalid data.';
         }
       },
       error: err => {
-        console.error('Failed to fetch Hemo attempts:', err);
-        this.errorMessage = 'Failed to load attempts.';
+        console.error('Failed to fetch CVR flashcard attempts:', err);
+        this.errorMessage = 'Failed to load CVR flashcard attempts.';
       }
     });
   }
@@ -51,16 +50,16 @@ export class DrhemoAttemptsComponent implements OnInit {
 
     const headerLine = this.columns.join(',');
     const dataLines  = this.attempts.map(row =>
-      this.columns.map(col =>
-        `"${(row[col] ?? '').toString().replace(/"/g, '""')}"`
-      ).join(',')
+      this.columns
+        .map(col => `"${(row[col] ?? '').toString().replace(/"/g, '""')}"`)
+        .join(',')
     );
-    const csvContent = [headerLine, ...dataLines].join('\r\n');
 
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'drhemo_attempts.csv';
+    const csvContent = [headerLine, ...dataLines].join('\r\n');
+    const blob       = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link       = document.createElement('a');
+    link.href        = URL.createObjectURL(blob);
+    link.download    = 'cvrflashcardattempts.csv';
     link.click();
   }
 }

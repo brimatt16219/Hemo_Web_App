@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule }               from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NavBarComponent }            from '../nav-bar/nav-bar.component';
+import { NavBarComponent }            from '../../nav-bar/nav-bar.component';
 
 interface CvrCaseAttempt {
   CaseAttemptId: number;
