@@ -7,6 +7,7 @@ import { CvrcaseAttemptsComponent } from './cvrcase-attempts/cvrcase-attempts.co
 import { CvrcasesComponent } from './cvrcases/cvrcases.component';
 import { CvrflashcardAttemptsComponent } from './cvrflashcard-attempts/cvrflashcard-attempts.component';
 import { CvrflashcardsComponent } from './cvrflashcards/cvrflashcards.component';
+import { CvrquizAttemptsComponent } from './cvrquiz-attempts/cvrquiz-attempts.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -17,5 +18,6 @@ export const routes: Routes = [
     { path: 'cvrcase-attempts', component: CvrcaseAttemptsComponent},
     { path: 'cvrcases', component: CvrcasesComponent},
     { path: 'cvrflashcard-attempts', component: CvrflashcardAttemptsComponent},
-    { path: 'cvrflashcards', component: CvrflashcardsComponent}
+    { path: 'cvrflashcards', component: CvrflashcardsComponent},
+    { path: 'cvrquizattempts', component: CvrquizAttemptsComponent}
 ];
