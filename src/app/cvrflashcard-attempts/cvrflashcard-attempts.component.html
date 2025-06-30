@@ -1,0 +1,23 @@
+<app-nav-bar></app-nav-bar>
+<div class="dashboard-container">
+  <h2>CVR Flashcard Attempts</h2>
+
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <table *ngIf="attempts.length > 0">
+    <thead>
+      <tr>
+        <th *ngFor="let col of columns">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let attempt of attempts">
+        <td *ngFor="let col of columns">{{ attempt[col] }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button (click)="downloadCSV()" class="download-btn">
+    Download CSV
+  </button>
+</div>

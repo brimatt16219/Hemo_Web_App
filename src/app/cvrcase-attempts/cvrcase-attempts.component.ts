@@ -4,13 +4,13 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavBarComponent }            from '../nav-bar/nav-bar.component';
 
 interface CvrCaseAttempt {
-  caseAttemptId: number;
-  cid:           number;
-  sid:           string;
-  grade:         number;
-  timeSpent:     string;  // e.g. "00:00:12.0000000"
-  answer:        string;
-  login:         number;
+  CaseAttemptId: number;
+  Cid:           number;
+  Sid:           string;
+  Grade:         number;
+  TimeSpent:     string;  // e.g. "00:00:12.0000000"
+  Answer:        string;
+  Login:         number;
 }
 
 
@@ -54,8 +54,8 @@ export class CvrcaseAttemptsComponent implements OnInit {
 
     const headers = ['CAID','CID','SID','Grade','TimeSpent','Answer','Login'];
     const rows = this.attempts.map(a => [
-      a.caseAttemptId, a.cid, a.sid,
-      a.grade, a.timeSpent, a.answer, a.login
+      a.CaseAttemptId, a.Cid, a.Sid,
+      a.Grade, a.TimeSpent, a.Answer, a.Login
     ]);
 
     const csv =
