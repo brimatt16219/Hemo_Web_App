@@ -13,13 +13,13 @@
   </thead>
   <tbody>
     <tr *ngFor="let a of attempts">
-      <td>{{ a.caseAttemptId ?? 'null' }}</td>
-      <td>{{ a.cid           ?? 'null' }}</td>
-      <td>{{ a.sid           ?? 'null' }}</td>
-      <td>{{ a.grade         ?? 'null' }}</td>
-      <td>{{ a.timeSpent     ?? 'null' }}</td>
-      <td>{{ a.answer        ?? 'null' }}</td>
-      <td>{{ a.login         ?? 'null' }}</td>
+      <td>{{ a.caseAttemptId }}</td>
+      <td>{{ a.cid           }}</td>
+      <td>{{ a.sid           }}</td>
+      <td>{{ a.grade         }}</td>
+      <td>{{ a.timeSpent === null ? 'null' : a.timeSpent }}</td>
+      <td>{{ a.answer        }}</td>
+      <td>{{ a.login         }}</td>
     </tr>
   </tbody>
 </table>
