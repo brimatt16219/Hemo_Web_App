@@ -1,1 +1,23 @@
-<p>cvrquizes works!</p>
+<app-nav-bar></app-nav-bar>
+<div class="dashboard-container">
+  <h2>CVR Quizzes</h2>
+
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <table *ngIf="quizzes.length > 0">
+    <thead>
+      <tr>
+        <th *ngFor="let col of columns">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let q of quizzes">
+        <td *ngFor="let col of columns">{{ q[col] }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button (click)="downloadCSV()" class="download-btn">
+    Download CSV
+  </button>
+</div>
