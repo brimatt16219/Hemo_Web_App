@@ -1,6 +1,6 @@
 # HemoWebApp
 
-HemoWebApp is an Angular-based frontend that connects to a .NET Web API and an Azure SQL database to deliver an interactive, data-driven experience for cardiac hemodynamics education.
+HemoWebApp is an Angular-based frontend that connects to a .NET Web API and an Azure SQL database to deliver an interactive admin portal for viewing data on the cardiac hemo server.
 
 ---
 
