@@ -1,20 +1,18 @@
 <app-nav-bar></app-nav-bar>
 <div class="dashboard-container">
-  <h2>CVR Flashcard Attempts</h2>
+  <h2>CVR Flashcards</h2>
 
   <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
 
-  <table *ngIf="attempts.length > 0">
+  <table *ngIf="flashcards.length > 0">
     <thead>
       <tr>
         <th *ngFor="let col of columns">{{ col }}</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let attempt of attempts">
-        <td *ngFor="let col of columns">
-            {{ attempt[col] === null ? 'null' : ('' + attempt[col]) }}
-        </td>
+      <tr *ngFor="let fc of flashcards">
+        <td *ngFor="let col of columns">{{ fc[col] }}</td>
       </tr>
     </tbody>
   </table>

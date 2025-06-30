@@ -6,6 +6,7 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { CvrcaseAttemptsComponent } from './cvrcase-attempts/cvrcase-attempts.component';
 import { CvrcasesComponent } from './cvrcases/cvrcases.component';
 import { CvrflashcardAttemptsComponent } from './cvrflashcard-attempts/cvrflashcard-attempts.component';
+import { CvrflashcardsComponent } from './cvrflashcards/cvrflashcards.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -15,5 +16,6 @@ export const routes: Routes = [
     { path: 'leaderboard', component: LeaderboardComponent},
     { path: 'cvrcase-attempts', component: CvrcaseAttemptsComponent},
     { path: 'cvrcases', component: CvrcasesComponent},
-    { path: 'cvrflashcard-attempts', component: CvrflashcardAttemptsComponent}
+    { path: 'cvrflashcard-attempts', component: CvrflashcardAttemptsComponent},
+    { path: 'cvrflashcards', component: CvrflashcardsComponent}
 ];
