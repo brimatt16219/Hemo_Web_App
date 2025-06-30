@@ -11,6 +11,7 @@ import { CvrquizAttemptsComponent } from './cvrquiz-attempts/cvrquiz-attempts.co
 import { CvrquizesComponent } from './cvrquizes/cvrquizes.component';
 import { DrhemoAnswersComponent } from './drhemo-answers/drhemo-answers.component';
 import { DrhemoAttemptsComponent } from './drhemo-attempts/drhemo-attempts.component';
+import { DrhemoPuzzlestepsComponent } from './drhemo-puzzlesteps/drhemo-puzzlesteps.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -25,5 +26,6 @@ export const routes: Routes = [
     { path: 'cvrquizattempts', component: CvrquizAttemptsComponent},
     { path: 'cvrquizes', component: CvrquizesComponent},
     { path: 'drhemo-answers', component: DrhemoAnswersComponent},
-    { path: "drhemo-attempts", component: DrhemoAttemptsComponent}
+    { path: 'drhemo-attempts', component: DrhemoAttemptsComponent},
+    { path: 'drhemo-puzzlesteps', component: DrhemoPuzzlestepsComponent}
 ];
