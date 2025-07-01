@@ -4,16 +4,6 @@ HemoWebApp is an Angular-based frontend that connects to a .NET Web API and an A
 
 ---
 
-## Overview
-
-HemoWebApp provides:
-
-- **Dynamic dashboards** for case attempts, flashcards, quizzes, puzzle-steps, and more  
-- **CSV export** functionality for all data tables  
-- **Real-time data interaction** with a Web API  
-- **Persistent storage** in Azure SQL  
-
----
 
 ## Tech Stack
 
@@ -51,7 +41,7 @@ HemoWebApp provides:
 
 ```bash
 # Frontend (HemoWebApp)
-git clone <your-frontend-repo-url> HemoWebApp
+git clone https://github.com/brimatt16219/Hemo_Web_App.git HemoWebApp
 cd HemoWebApp
 
 # Backend (Web API)
