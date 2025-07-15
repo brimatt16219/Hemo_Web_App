@@ -41,4 +41,51 @@ export class AddStudentComponent {
       });
     }
   }
+
+  selectedFileName: string = '';
+
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0];
+    if (!file) return;
+
+    this.selectedFileName = file.name;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const text = reader.result as string;
+      this.parseCSVAndUpload(text);
+    };
+    reader.readAsText(file);
+  }
+
+  parseCSVAndUpload(csvData: string): void {
+    const lines = csvData.split('\n').filter(line => line.trim() !== '');
+    lines.shift(); // Skip CSV header row
+
+    lines.forEach(line => {
+      const [SID, pass, classSection, appSettings, loggedIn] = line.split(',');
+
+      const newStudent = {
+        SID: SID.trim(),
+        pass: pass.trim(),
+        classSection: classSection.trim(),
+        appSettings: appSettings.trim(),
+        loggedIn: parseInt(loggedIn.trim()) || 0
+      };
+
+      this.http.post('http://localhost:5295/api/login/AddStudent', null, {
+        params: newStudent,
+        responseType: 'text'
+      }).subscribe({
+        next: () => {
+          this.message = 'CSV students uploaded successfully.';
+        },
+        error: (err) => {
+          console.error('Failed to add student from CSV:', err);
+          this.message = 'Failed to add some students. Check console for details.';
+        }
+      });
+    });
+  }
+
 }

@@ -1,4 +1,11 @@
 <app-nav-bar></app-nav-bar>
+
+<div class="upload-container">
+  <label for="csvUpload" class="upload-btn">Upload CSV</label>
+  <input id="csvUpload" type="file" accept=".csv" (change)="onFileSelected($event)" hidden />
+  <p *ngIf="selectedFileName" class="file-name">{{ selectedFileName }}</p>
+</div>
+
 <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
   <label>SID: <input formControlName="SID" /></label><br />
   <label>Password: <input type="password" formControlName="pass" /></label><br />
