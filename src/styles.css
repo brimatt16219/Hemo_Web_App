@@ -100,14 +100,14 @@ th {
   background-color: #45a049;
 }
 
-.action-buttons button:last-child {
-  background-color: #f44336; /* Delete - Red */
+/* .action-buttons button:last-child {
+  background-color: #f44336; 
   color: white;
 }
 
 .action-buttons button:last-child:hover {
   background-color: #d32f2f;
-}
+} */
 
 .download-btn {
   margin-top: 1.5rem;
