@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule }               from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavBarComponent }            from '../../nav-bar/nav-bar.component';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector:    'app-cvrflashcard-attempts',
@@ -16,7 +17,7 @@ export class CvrflashcardAttemptsComponent implements OnInit {
   errorMessage = '';
 
   // adjust if your controller is CvrCasesController vs CvrFlashcardsController
-  private apiUrl = 'http://localhost:5295/api/CvrFlashCard/GetCVRFlashcardAttempt';
+  private apiUrl = `${environment.apiBaseUrl}/CvrFlashCard/GetCVRFlashcardAttempt`;
 
   constructor(private http: HttpClient) {}
 

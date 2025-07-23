@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://localhost:5295/api'
+  apiBaseUrl: 'https://net7497.net.ucf.edu/api'
 };

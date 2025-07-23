@@ -4,6 +4,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { GlobalService } from '../../services/global.service';
 import { NavBarComponent } from '../../nav-bar/nav-bar.component';
 import { EditStudentComponent } from '../edit-student/edit-student.component';
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.http.get<any[]>('http://localhost:5295/api/Student/GetStudents').subscribe({
+    this.http.get<any[]>(`${environment.apiBaseUrl}/Student/GetStudents`).subscribe({
       next: (res) => {
         this.students = res;
       },
@@ -47,7 +48,7 @@ export class DashboardComponent implements OnInit {
   }
 
   saveEditedStudent(updated: any) {
-    this.http.put('http://localhost:5295/api/Student/UpdateStudent', updated).subscribe({
+    this.http.put(`${environment.apiBaseUrl}/Student/UpdateStudent`, updated).subscribe({
       next: () => {
         alert('Student updated');
         this.closeEditModal();

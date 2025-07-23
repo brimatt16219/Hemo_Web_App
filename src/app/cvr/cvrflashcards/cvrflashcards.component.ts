@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule }               from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavBarComponent }            from '../../nav-bar/nav-bar.component';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector:    'app-cvrflashcards',
@@ -16,7 +17,7 @@ export class CvrflashcardsComponent implements OnInit {
   errorMessage = '';
 
   // your GetCvrFlashcards endpoint
-  private apiUrl = 'http://localhost:5295/api/CvrFlashCard/GetCvrFlashcards';
+  private apiUrl = `${environment.apiBaseUrl}/CvrFlashCard/GetCvrFlashcards`;
 
   constructor(private http: HttpClient) {}
 

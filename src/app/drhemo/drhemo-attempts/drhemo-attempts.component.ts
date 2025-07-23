@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule }               from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavBarComponent }            from '../../nav-bar/nav-bar.component';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector:    'app-drhemo-attempts',
@@ -16,7 +17,7 @@ export class DrhemoAttemptsComponent implements OnInit {
   errorMessage = '';
 
   // matches your controller’s route for drhemo_attempts
-  private apiUrl = 'http://localhost:5295/api/hemoUpdateAttempt/GetHemoAttempts';
+  private apiUrl = `${environment.apiBaseUrl}/hemoUpdateAttempt/GetHemoAttempts`;
 
   constructor(private http: HttpClient) {}
 

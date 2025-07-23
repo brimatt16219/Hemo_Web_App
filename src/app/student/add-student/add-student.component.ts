@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from '../../nav-bar/nav-bar.component';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-add-student',
@@ -30,7 +31,7 @@ export class AddStudentComponent {
     if (this.studentForm.valid) {
       const params = this.studentForm.value;
 
-      this.http.post('http://localhost:5295/api/login/AddStudent', null, { params, responseType: 'text' }).subscribe({
+      this.http.post(`${environment.apiBaseUrl}/login/AddStudent`, null, { params, responseType: 'text' }).subscribe({
         next: (res: any) => {
           this.message = res;
         },

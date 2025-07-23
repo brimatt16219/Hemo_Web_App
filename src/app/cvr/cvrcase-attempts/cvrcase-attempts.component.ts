@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule }               from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavBarComponent }            from '../../nav-bar/nav-bar.component';
+import { environment } from '../../../environments/environment';
 
 interface CvrCaseAttempt {
   CaseAttemptId: number;
@@ -25,7 +26,7 @@ export class CvrcaseAttemptsComponent implements OnInit {
   attempts: CvrCaseAttempt[] = [];
   errorMessage = '';
   
-  private apiUrl = 'http://localhost:5295/api/CvrCases/GetCvrCaseAttempt';
+  private apiUrl = `${environment.apiBaseUrl}/CvrCases/GetCvrCaseAttempt`;
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {

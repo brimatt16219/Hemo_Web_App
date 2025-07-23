@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule }               from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavBarComponent }            from '../../nav-bar/nav-bar.component';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector:    'app-drhemo-answers',
@@ -16,7 +17,7 @@ export class DrhemoAnswersComponent implements OnInit {
   errorMessage = '';
 
   // your GET api/hemoSubmitAttempt/GetHemoAnswers
-  private apiUrl = 'http://localhost:5295/api/hemoSubmitAttempt/GetHemoAnswers';
+  private apiUrl = `${environment.apiBaseUrl}/hemoSubmitAttempt/GetHemoAnswers`;
 
   constructor(private http: HttpClient) {}
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule }               from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavBarComponent }            from '../../nav-bar/nav-bar.component';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector:    'app-cvrquizes',
@@ -16,7 +17,7 @@ export class CvrquizesComponent implements OnInit {
   errorMessage = '';
 
   // GET api/CvrQuiz/GetAllQuizes
-  private apiUrl = 'http://localhost:5295/api/CvrQuiz/GetAllQuizes';
+  private apiUrl = `${environment.apiBaseUrl}/CvrQuiz/GetAllQuizes`;
 
   constructor(private http: HttpClient) {}
 

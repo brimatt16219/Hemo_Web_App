@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { GlobalService } from '../services/global.service'; // Import GlobalService
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -38,7 +39,7 @@ export class LoginComponent {
         password: password
       };
 
-      this.http.post<any>('http://localhost:5295/api/login/SqlLogin', null, { params }).subscribe({
+      this.http.post<any>(`${environment.apiBaseUrl}/login/SqlLogin`, null, { params }).subscribe({
         next: (res) => {
           if (res?.message?.toLowerCase().includes('login successful')) {
             this.globalService.setUsername(username); // Store username globally

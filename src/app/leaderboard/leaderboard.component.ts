@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-leaderboard',
@@ -17,7 +18,7 @@ export class LeaderboardComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get<any[]>('http://localhost:5295/api/HemoGetTopScores/GetTopScores').subscribe({
+    this.http.get<any[]>(`${environment.apiBaseUrl}/HemoGetTopScores/GetTopScores`).subscribe({
       next: (res) => {
         this.leaderboard = res;
       },

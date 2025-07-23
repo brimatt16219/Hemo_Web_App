@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule }               from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavBarComponent }            from '../../nav-bar/nav-bar.component';
+import { environment } from '../../../environments/environment.prod';
 
 @Component({
   selector:    'app-drhemo-puzzlesteps',
@@ -16,7 +17,7 @@ export class DrhemoPuzzlestepsComponent implements OnInit {
   errorMessage = '';
 
   // matches your controller: GET api/hemoUpdatePuzzleStep/GetHemoPuzzleStep
-  private apiUrl = 'http://localhost:5295/api/hemoUpdatePuzzleStep/GetHemoPuzzleStep';
+  private apiUrl = `${environment.apiBaseUrl}/hemoUpdatePuzzleStep/GetHemoPuzzleStep`;
 
   constructor(private http: HttpClient) {}
 

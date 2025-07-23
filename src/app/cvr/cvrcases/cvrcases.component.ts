@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule }               from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavBarComponent }            from '../../nav-bar/nav-bar.component';
+import { environment } from '../../../environments/environment';
 
 interface CvrCase {
   Cid:         number;
@@ -26,7 +27,7 @@ export class CvrcasesComponent implements OnInit {
   errorMessage = '';
 
   // matches [Route("GetCvrCases")]
-  private apiUrl = 'http://localhost:5295/api/CvrCases/GetCvrCases';
+  private apiUrl = `${environment.apiBaseUrl}/CvrCases/GetCvrCases`;
 
   constructor(private http: HttpClient) {}
 
