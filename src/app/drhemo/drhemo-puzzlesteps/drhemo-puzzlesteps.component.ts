@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule }               from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavBarComponent }            from '../../nav-bar/nav-bar.component';
-import { environment } from '../../../environments/environment.prod';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector:    'app-drhemo-puzzlesteps',

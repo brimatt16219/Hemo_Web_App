@@ -19,8 +19,8 @@ form {
   display: inline-block;
   padding: 0.6rem 1.2rem;
   margin-top: 1rem;
-  background-color: #007bff;
-  color: white;
+  background-color: #FFCC00;
+  color: black;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -29,7 +29,7 @@ form {
 }
 
 .upload-btn:hover {
-  background-color: #0056b3;
+  background-color: #A48300;
 }
 
 .file-name {
@@ -58,8 +58,8 @@ input {
 
 button {
   padding: 0.5rem 1.25rem;
-  background-color: #007bff;
-  color: #fff;
+  background-color: #FFCC00;
+  color: black;
   border: none;
   border-radius: 4px;
   font-size: 1rem;
@@ -67,7 +67,7 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #A48300;
 }
 
 p {

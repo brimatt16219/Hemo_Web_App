@@ -34,17 +34,3 @@ td {
 th {
   background-color: #f0f0f0;
 }
-
-.download-btn {
-  margin-top: 1.5rem;
-  padding: 0.6rem 1.2rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.download-btn:hover {
-  background-color: #0056b3;
-}

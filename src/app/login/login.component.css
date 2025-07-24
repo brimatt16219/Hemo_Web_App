@@ -16,10 +16,14 @@ input {
 button {
     width: 100%;
     padding: 10px;
-    background: #007bff;
-    color: white;
+    background: #FFCC00;
+    color: black;
     border: none;
     border-radius: 4px;
+}
+
+button:hover {
+  background-color: #A48300;
 }
 
 button:disabled {

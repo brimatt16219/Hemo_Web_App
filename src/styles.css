@@ -42,15 +42,15 @@ th {
 .download-btn {
   margin-top: 1.5rem;
   padding: 0.6rem 1.2rem;
-  background-color: #007bff;
-  color: white;
+  background-color: #FFCC00;
+  color: black;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .download-btn:hover {
-  background-color: #0056b3;
+  background-color: #A48300;
 }
 
 h2 {
@@ -108,17 +108,3 @@ th {
 .action-buttons button:last-child:hover {
   background-color: #d32f2f;
 } */
-
-.download-btn {
-  margin-top: 1.5rem;
-  padding: 0.6rem 1.2rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.download-btn:hover {
-  background-color: #0056b3;
-}

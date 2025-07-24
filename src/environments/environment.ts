@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiBaseUrl: 'https://net7497.net.ucf.edu/api'
+  apiBaseUrl: 'http://localhost:5295/api' // change URL to deployed URL, like http://deployed-url/api
 };
