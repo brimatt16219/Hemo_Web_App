@@ -4,7 +4,7 @@
 
   <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
 
-  <button *ngIf="leaderboard.length" (click)="downloadCSV()">Download CSV</button>
+  <button *ngIf="leaderboard.length" (click)="downloadCSV()" class="download-btn">Download CSV</button>
 
   <table *ngIf="leaderboard.length" class="leaderboard-table">
     <thead>
