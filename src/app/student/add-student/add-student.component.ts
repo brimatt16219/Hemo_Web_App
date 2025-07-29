@@ -77,12 +77,14 @@ export class AddStudentComponent {
         loggedIn: parseInt(loggedIn.trim()) || 0
       };
 
-      this.http.post('http://localhost:5295/api/login/AddStudent', null, {
+      this.http.post(`${environment.apiBaseUrl}/login/AddStudent`, null, {
         params: newStudent,
         responseType: 'text'
       }).subscribe({
         next: () => {
           this.message = 'CSV students uploaded successfully.';
+          alert('CSV added successfully');
+          this.router.navigate(['/dashboard'], { state: { refresh: true } });
         },
         error: (err) => {
           console.error('Failed to add student from CSV:', err);
