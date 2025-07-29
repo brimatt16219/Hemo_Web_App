@@ -2,7 +2,7 @@
 <div class="dashboard-container">
   <h2>Students</h2>
 
-  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+  <p class="error" *ngIf="errorMessage || !isLoading">{{ errorMessage }}</p>
   
   <button (click)="downloadCSV()" class="download-btn">Download CSV</button>
 
