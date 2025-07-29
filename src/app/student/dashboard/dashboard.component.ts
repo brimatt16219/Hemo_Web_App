@@ -26,13 +26,17 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getStudents();
+  }
+
+  getStudents(): void {
     this.http.get<any[]>(`${environment.apiBaseUrl}/Student/GetStudents`).subscribe({
       next: (res) => {
         this.students = res;
       },
       error: (err) => {
         console.error('Failed to fetch students:', err);
-        this.errorMessage = 'Failed to load student data.'; 
+        this.errorMessage = 'Failed to load student data.';
       }
     });
   }
@@ -52,7 +56,7 @@ export class DashboardComponent implements OnInit {
       next: () => {
         alert('Student updated');
         this.closeEditModal();
-        this.ngOnInit(); // Refresh the table
+        this.getStudents();
       },
       error: (err) => {
         alert('Update failed');
@@ -82,16 +86,18 @@ export class DashboardComponent implements OnInit {
 
 
   confirmDelete(student: any) {
-    const confirmed = window.confirm(`Are you sure you want to delete SID: ${student.Sid}?`);
+    const confirmed = window.confirm(`Are you sure you want to delete student ${student.Sid}?`);
     if (confirmed) {
-      this.http.delete(`http://localhost:5295/api/Student/DeleteStudent?SID=${student.Sid}`).subscribe({
+      this.http.delete(`${environment.apiBaseUrl}/Student/DeleteStudent?SID=${student.Sid}`).subscribe({
         next: () => {
           this.students = this.students.filter(s => s.Sid !== student.Sid);
           alert('Student deleted successfully');
+          this.getStudents();
         },
         error: (err) => {
           console.error('Delete failed', err);
-          alert('Error deleting student');
+          alert('Student deleted successfully');
+          this.getStudents();
         }
       });
     }

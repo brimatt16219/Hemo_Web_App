@@ -5,6 +5,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from '../../nav-bar/nav-bar.component';
 import { environment } from '../../../environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-student',
@@ -17,7 +18,7 @@ export class AddStudentComponent {
   studentForm!: FormGroup;
   message: string = '';
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.studentForm = this.fb.group({
       SID: ['', Validators.required],
       pass: ['', Validators.required],
@@ -34,6 +35,8 @@ export class AddStudentComponent {
       this.http.post(`${environment.apiBaseUrl}/login/AddStudent`, null, { params, responseType: 'text' }).subscribe({
         next: (res: any) => {
           this.message = res;
+          alert('Student added successfully');
+          this.router.navigate(['/dashboard'], { state: { refresh: true } });
         },
         error: (err) => {
           console.error('Add student failed:', err);
