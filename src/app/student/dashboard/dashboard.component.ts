@@ -16,7 +16,6 @@ import { environment } from '../../../environments/environment';
 })
 export class DashboardComponent implements OnInit {
   students: any[] = [];
-  isLoading = true;
   errorMessage: string = '';
   showEditModal = false;
   selectedStudent: any = null;
@@ -30,12 +29,10 @@ export class DashboardComponent implements OnInit {
     this.http.get<any[]>(`${environment.apiBaseUrl}/Student/GetStudents`).subscribe({
       next: (res) => {
         this.students = res;
-        this.isLoading = false;
       },
       error: (err) => {
         console.error('Failed to fetch students:', err);
-        this.errorMessage = 'Failed to load student data.';
-        this.isLoading = false;        
+        this.errorMessage = 'Failed to load student data.'; 
       }
     });
   }
